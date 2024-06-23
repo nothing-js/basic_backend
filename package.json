@@ -1,0 +1,11 @@
+{
+  "name": "nothing_basic_backend",
+  "version": "1.0.0",
+  "description": "test of beckend ",
+  "main": "script.js",
+  "scripts": {
+    "dev": " node script.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
