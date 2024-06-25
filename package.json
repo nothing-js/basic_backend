@@ -4,8 +4,13 @@
   "description": "test of beckend ",
   "main": "script.js",
   "scripts": {
-    "dev": " node script.js"
+    "dev": " nodemon server.js"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "accessibility": "^6.0.1",
+    "express": "^4.19.2",
+    "nodemon": "^3.1.4"
+  }
 }
