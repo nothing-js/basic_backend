@@ -1,14 +1,23 @@
-import express from 'express'
+const express = require('express')
+const path = require('path')
 const app = express()
 
 // this is use for using midleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// this line for joinig the folder to file 
+//is ka use hum file ko attached kerne ke liye kerte h 
+
+app.use(express.static(path.join(__dirname,'public')))
+
+// this line for ejs file using 
+app.set('view engine','ejs')
+
 app.get('/',(req,res) =>{
-    res.send("hello you are in routing")
+    res.render("view")
 })
 
-app.listen(3000,() => {
-    console.log("it is runing")
-})
+// app.listen(3000,() => {
+//     console.log("it is runing")
+// })
