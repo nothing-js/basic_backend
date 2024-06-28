@@ -1,23 +1,27 @@
 const express = require('express')
-const path = require('path')
 const app = express()
+const path = require('path')
+const fs = require('fs')
 
-// this is use for using midleware
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
-// this line for joinig the folder to file 
-//is ka use hum file ko attached kerne ke liye kerte h 
-
 app.use(express.static(path.join(__dirname,'public')))
-
-// this line for ejs file using 
 app.set('view engine','ejs')
 
-app.get('/',(req,res) =>{
-    res.render("view")
+app.get("/",(req,res) => {
+    fs.readdir('./files',(err,files) => {
+        res.render('view',{files:files}) 
+    })   
 })
 
-// app.listen(3000,() => {
-//     console.log("it is runing")
-// })
+app.post("/create",(req,res) => {
+    fs.writeFile(`./files/${req.body.title.split(' ').join()}.txt`,req.body.detail,() => {
+        res.redirect('/')
+    })
+})
+
+
+app.listen(3000,() =>{
+    console.log("Server is running on port 3000")
+})
